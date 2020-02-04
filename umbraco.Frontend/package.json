@@ -1,0 +1,54 @@
+{
+  "name": "umbraco-frontend",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir -p dist/{frontend/fonts,frontend/images,frontend/scripts,frontend/styles,frontend/dummy} && mkdir -p src/{styles,markup,scripts,dummy,assets}",
+    "build": "npm run build:markup & npm run build:styles & npm run build:script && npm run umbraco",
+    "build:markup": "pug src/markup/*.pug --pretty -o dist",
+    "build:styles": "node-sass --output-style --precision 5 src/styles/main.scss | postcss --use autoprefixer --autoprefixer.browsers 'last 2 versions' | cssmin > dist/frontend/styles/main.css",
+    "build:script": "browserify src/scripts/app.js -t babelify | uglifyjs -o dist/frontend/scripts/app.js",
+    "watch": "npm run watch:markup & npm run watch:styles & npm run watch:script",
+    "watch:markup": "chokidar 'src/markup/**/*.{pug,json}' -c 'npm run build:markup'",
+    "watch:styles": "chokidar 'src/styles/**/*.scss' -c 'npm run build:styles'",
+    "watch:dummy": "chokidar 'src/dummy/*.*' -c 'npm run copy:dummy'",
+    "watch:assets": "chokidar 'src/assets/*.*' -c 'npm run copy:assets'",
+    "watch:script": "chokidar 'src/scripts/**/*.js' -c 'npm run build:script'",
+    "copy": "npm run copy:dummy & npm run copy:assets",
+    "copy:assets": "cp -r src/assets dist",
+    "copy:dummy": "cp -r src/dummy dist",
+    "copy:fonts": "cp -r src/fonts dist",
+    "sync": "browser-sync start --no-notify --files 'dist/index.html, dist/styles/main.css, dist/scripts/app.js' --server 'dist'",
+    "start": "code ../umbracoFrontend.code-workspace & npm run copy & npm run sync & npm run watch",
+    "deploy": "surge --project ./dist --domain knoew-radarlive.surge.sh",
+    "umbraco": "rm -rfv ../umbraco.Web/frontend && mkdir ../umbraco.Web/frontend && cp -r dist/frontend/{fonts,images,scripts,styles} ../umbraco.Web/frontend"
+  },
+  "dependencies": {
+    "domready": "~1.0.7",
+    "q": "^1.4.1",
+    "xhr": "~2.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "babelify": "^6.3.0",
+    "browser-sync": "^2.0.0-rc7",
+    "browserify": "^8.1.3",
+    "browserify-shim": "^3.8.7",
+    "chokidar-cli": "^1.0.1",
+    "cssmin": "^0.4.3",
+    "node-sass": "^3.2.0",
+    "postcss": "^5.0.8",
+    "postcss-cli": "^2.1.0",
+    "pug": "^2.0.4",
+    "pug-cli": "^1.0.0-alpha6",
+    "require-dir": "^0.1.0",
+    "uglifyjs": "^2.4.10"
+  },
+  "browser": {},
+  "browserify-shim": {},
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  }
+}

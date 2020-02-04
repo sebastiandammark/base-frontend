@@ -1,0 +1,25 @@
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  position: relative;
+  width: 100%;
+  background: getcolor(blue);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}

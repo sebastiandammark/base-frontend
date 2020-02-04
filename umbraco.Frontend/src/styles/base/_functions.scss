@@ -1,0 +1,25 @@
+@function _breakpoint($name) {
+  @if not map-has-key($breakpoints, $name) {
+    @warn "Couldn't find a breakpoint named `#{$name}`.";
+    @return false;
+  }
+
+  @return map-get($breakpoints, $name);
+}
+
+@function em($px-value, $base: $base-font-size) {
+  @return #{$px-value / $base}em;
+}
+
+@function getcolor($name: 'blue') {
+  @return map-get($color, $name);
+}
+
+@function _text-breakpoints-for($text-size) {
+  @return map-get($text-sizing, $text-size);
+}
+
+@function _text-properties-for($text-size, $name) {
+  $text-breakpoints-map: _text-breakpoints-for($text-size);
+  @return map-get($text-breakpoints-map, $name);
+}

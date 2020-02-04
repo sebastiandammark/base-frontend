@@ -1,0 +1,35 @@
+@font-face {
+  font-family: brownthin;
+  src: url("../assets/fonts/Brown-Thin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: brownlight;
+  src: url("../assets/fonts/Brown-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: brownregular;
+  src: url("../assets/fonts/Brown-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: brownbold;
+  src: url("../assets/fonts/Brown-Bold.otf") format("opentype");
+}
+
+@mixin brownthin {
+  font-family: brownthin;
+}
+
+@mixin brownlight {
+  font-family: brownlight;
+}
+
+@mixin brownregular {
+  font-family: brownregular;
+}
+
+@mixin brownbold {
+  font-family: brownbold;
+}

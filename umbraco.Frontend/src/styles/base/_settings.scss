@@ -1,0 +1,71 @@
+$base-font-size: 14px;
+
+$maxwidth: 1920px;
+
+$breakpoints: (
+  phone: 480px,
+  tablet: 769px,
+  tablet-wide: 1025px,
+  desktop: 1440px,
+  desktop-wide: $maxwidth
+);
+
+$colors: (
+  bodybg: #192230,
+  action: #e96640,
+  headerbg: #141719,
+  titlebg: #242c32,
+  title: #e96640,
+  text: #dddddd,
+  meta: #434f56
+);
+
+$color: (
+  orange: #9cc19f,
+  orange-border: darken(#9cc19f, 15%),
+  textblue: #03275c,
+  blue: #052049,
+  darkblue: #031633,
+  darkblue-border: darken(#031633, 5%),
+  white: #fff,
+  black: #000
+);
+
+$text-sizing: (
+  slidermeta: (
+    phone: (
+      font-size: (15rem / 16),
+      line-height: 1
+    ),
+    tablet: (
+      font-size: (15rem / 16),
+      line-height: 1
+    ),
+    tablet-wide: (
+      font-size: (20rem / 16),
+      line-height: 1
+    ),
+    desktop: (
+      font-size: (20rem / 16),
+      line-height: 1
+    )
+  ),
+  sliderheader: (
+    phone: (
+      font-size: (15rem / 14),
+      line-height: 1.25
+    ),
+    tablet: (
+      font-size: (16rem / 16),
+      line-height: 1.25
+    ),
+    tablet-wide: (
+      font-size: (25rem / 16),
+      line-height: 1
+    ),
+    desktop: (
+      font-size: (25rem / 16),
+      line-height: 1
+    )
+  )
+);
