@@ -4,6 +4,7 @@ const siteModules = [];
 
 (function() {
 	const init = () => {
+		console.log('JS Initiated');
 		siteModules.push(new CookieCheck());
 	};
 
